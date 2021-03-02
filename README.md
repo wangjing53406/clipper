@@ -22,13 +22,45 @@ The intent's *Action* can be either "get" or "set". When setting the clipboard v
 
 Usage example using broadcast intent:
 
-	# am broadcast -a clipper.set -e text "this can be pasted now"
-	# am broadcast -a clipper.get
+	# am broadcast -a clipper.set -e text "this can be pasted now" ca.zgrs.clipper
+	# am broadcast -a clipper.get ca.zgrs.clipper
 
 # Building
-Build using maven
+Build using gradle
+  ./gradlew assemble
 
-1. update pom.xml and set ANDROID_HOME in enviroment.
-2. build: `mvn package` 
-3. deploy: `mvn android:deploy`
+# Simplify Usage
 
+1. install [clipper.apk](https://github.com/majido/clipper/releases/download/v1.2.1/clipper.apk)
+
+> adb install clipper.apk
+
+2. add the two methods below to ~/.bash_profile.
+
+```
+function get_clip() {
+	adb shell am start -W -n ca.zgrs.clipper/ca.zgrs.clipper.Main;
+	adb shell am broadcast -a clipper.get ca.zgrs.clipper;
+	adb shell input keyevent 4;
+}
+
+function set_clip() {
+	adb shell am start -W -n ca.zgrs.clipper/ca.zgrs.clipper.Main;
+	adb shell "am broadcast -a clipper.set -e text '$1' ca.zgrs.clipper";
+	adb shell input keyevent 4;
+}
+```
+
+3. source environment variable
+
+> source ~/.bash_profile
+
+或者
+
+> source ~/.zsh_rc
+
+4. instructions
+
+> get Clipboard: get_clip
+
+> set Clipboard: set_clip AAA
