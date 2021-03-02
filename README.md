@@ -2,7 +2,7 @@
 Simple app to interact with Android system clipboard service via adb shell one liners.
 
 # Installation
-Download the [application apk](https://github.com/majido/clipper/releases/download/v1.2.1/clipper.apk) and manually install application on your android device.
+Download the [application apk](https://github.com/wangjing53406/clipper/releases/download/v1.0.0/clipper.apk) and manually install application on your android device.
 
 # Usage
 Assuming you have already installed the app, connect to your emulator or phone using adb shell.
@@ -31,7 +31,7 @@ Build using gradle
 
 # Simplify Usage
 
-1. install [clipper.apk](https://github.com/majido/clipper/releases/download/v1.2.1/clipper.apk)
+1. install [clipper.apk](https://github.com/wangjing53406/clipper/releases/download/v1.0.0/clipper.apk)
 
 > adb install clipper.apk
 
